@@ -4,9 +4,7 @@ import { Component, OnInit } from '@angular/core';
 // example of using online template and style
 @Component({
   selector: 'app-servers',
-  template: `
-  <app-server></app-server>
-  <app-server></app-server>`,
+  templateUrl: './servers.component.html',
   styles: [`
     h3 {
       color : blue;
@@ -14,9 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
 
-  constructor() { }
+  allowNewServer = true;
+  serverCreationStatus = 'No server was created.';
+  serverName = 'Test';
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  onCreateServer() {
+    this.serverCreationStatus = 'Server was created. Name is ' + this.serverName;
+  }
+
+  onUpdateServerName(event: any) {
+    console.log(event);
+    this.serverName = event.target.value;
+  }
+
 }
+
